@@ -5,11 +5,11 @@
 #include "M25P16.h"
 
 /*
-函数功能：  底层接口函数
-            读存储器扇区，默认每扇区512字节
-参数    ：  u32 Addr        扇区第一字节的绝对地址
-            u32 *DataBuf    数据缓存区，读取到的数据
-返回值  ：  void
+Function: Underlying interface function
+            Read memory sectors, default 512 bytes per sector
+Parameters: u32 Addr absolute address of the first byte of the sector
+            u32 *DataBuf data buffer, the data read
+Return value: void
 */
 void Disk_ReadSec(u32 Addr, u32 *DataBuf)
 {
@@ -17,11 +17,11 @@ void Disk_ReadSec(u32 Addr, u32 *DataBuf)
 }
 
 /*
-函数功能：  底层接口函数
-            写存储器扇区，默认每扇区512字节
-参数    ：  u32 Addr        扇区第一字节的绝对地址
-            u32 *DataBuf    数据缓存区，将要写入存储器的的数据
-返回值  ：  void
+Function: Underlying interface function
+            Write memory sector, default 512 bytes per sector
+Parameters: u32 Addr absolute address of the first byte of the sector
+            u32 *DataBuf data buffer, the data to be written to the memory
+Return value: void
 */
 void Disk_WriteSec(u32 Addr, u32 *DataBuf)
 {
@@ -29,11 +29,11 @@ void Disk_WriteSec(u32 Addr, u32 *DataBuf)
 }
 
 /*
-函数功能：  Unicode码转换为GB2312码，用于长文件名的读取
-            实现方法是查询Unicode到GB2312的转换表
-            此转换表保存在 M25P16 flash存储芯片上
-参数    ：  u16 Unicode 16位Unicode数据
-返回值  ：  u16 GB2312  16位GB2312数据
+Function: Convert Unicode code to GB2312 code for reading long file names
+            The implementation method is to query the Unicode to GB2312 conversion table
+            The conversion table is stored on M25P16 flash memory chip.
+Parameter: u16 Unicode 16-bit Unicode data
+Return value : u16 GB2312 16-bit GB2312 data
 */
 u16 UnicodeToGb2312(u16 Unicode)
 {
