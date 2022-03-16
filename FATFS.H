@@ -15,13 +15,13 @@ typedef struct
 
 typedef struct
 {
-    u8 *Name;           //文件名
-    u8  Attrib;         //文件属性
-    u16 CurSec;         //当前扇区
-    u32 CurClus;        //当前簇
-    u32 Size;           //文件大小
-    u32 FstClus;        //文件起始簇
-    u32 DirEntryAddr;   //文件目录项地址
+    u8 *Name;           //file name
+    u8  Attrib;         //file attributes
+    u16 CurSec;         //current sector
+    u32 CurClus;        //current cluster
+    u32 Size;           //file size
+    u32 FstClus;        //file start cluster
+    u32 DirEntryAddr;   //file directory entry address
 } FS_Object;
 
 typedef u8  FS_Status;

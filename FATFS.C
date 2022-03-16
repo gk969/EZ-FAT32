@@ -33,11 +33,11 @@ FATFS FS;
 FS_Object   RootDir;
 
 /*
-函数功能：  文件系统初始化。
-            初始化结构体FS，获取FAT文件系统参数。
-            初始化结构体RootDir，获取根目录参数。
-参数    ：  void
-返回值  ：  void
+Function: File system initialization.
+            Initializes the structure FS and gets the FAT file system parameters.
+            Initialize the structure RootDir, get the parameters of root directory.
+Parameter : void
+Return Value : void
 */
 void FATFS_Init(void)
 {
@@ -70,9 +70,9 @@ void FATFS_Init(void)
 }
 
 /*
-函数功能：  文件系统测试
-参数    ：  void
-返回值  ：  void
+Function: File system test
+Parameter : void
+Return Value : void
 */
 void FS_Test(void)
 {
@@ -91,9 +91,9 @@ void FS_Test(void)
 }
 
 /*
-函数功能：  从FAT中读取下一簇号
-参数    ：  CurClus     当前簇号
-返回值  ：  NextClus    下一簇号
+Function: Read the next cluster number from the FAT
+Parameters: CurClus Current Cluster Number
+Return Value : NextClus Next Cluster Number
 */
 u32 Read_NextClusNum(u32 CurClus)
 {
@@ -111,9 +111,9 @@ u32 Read_NextClusNum(u32 CurClus)
 }
 
 /*
-函数功能：  向文件或文件夹写入数据时获取下一个空白簇号
-参数    ：  LastClus        上一簇号
-返回值  ：  New_ClusNum     新的待写入簇号
+Function: Get the next blank cluster number when writing data to a file or folder
+Parameters: LastClus Previous cluster number
+Return value: New_ClusNum New cluster number to be written
 */
 u32 Write_NextClusNum(u32 LastClus)
 {
@@ -169,11 +169,11 @@ u32 Write_NextClusNum(u32 LastClus)
 }
 
 /*
-函数功能：  读取一个扇区
-参数    ：  CurClus 当前簇号
-            CurSec  当前簇内扇区号
-            Buffer  数据缓冲区
-返回值  ：  void
+Function: Read a sector
+Parameters : CurClus Current cluster number
+            CurSec Current sector number in the cluster
+            Buffer Data Buffer
+Return Value: void
 */
 void ReadSec(u32 CurClus, u8 CurSec, u32 *Buffer)
 {
@@ -184,11 +184,11 @@ void ReadSec(u32 CurClus, u8 CurSec, u32 *Buffer)
 }
 
 /*
-函数功能：  写一个扇区
-参数    ：  CurClus 当前簇号
-            CurSec  当前簇内扇区号
-            Buffer  数据缓冲区
-返回值  ：  void
+Function: Write a sector
+Parameters : CurClus Current cluster number
+            CurSec Current sector number in the cluster
+            Buffer Data Buffer
+Return Value: void
 */
 void WriteSec(u32 CurClus, u8 CurSec, u32 *Buffer)
 {
@@ -199,9 +199,9 @@ void WriteSec(u32 CurClus, u8 CurSec, u32 *Buffer)
 }
 
 /*
-函数功能：  获取簇号对应的存储器地址
-参数    ：  Clus    簇号
-返回值  ：          地址
+Function: Get the memory address corresponding to the cluster number
+Parameter : Clus Cluster Number
+Return Value : Address
 */
 u32 Get_ClusAddr(u32 Clus)
 {
@@ -209,11 +209,11 @@ u32 Get_ClusAddr(u32 Clus)
 }
 
 /*
-函数功能：  内存复制
-参数    ：  Source  数据源地址
-            Target  数据目标地址
-            Length  数据长度
-返回值  ：  void
+Function: Memory Copy
+Parameters : Source Data source address
+            Target Data target address
+            Length Data length
+Return Value: void
 */
 void CopyRam(const u8 *Source, u8 *Target, u16 Length)
 {
@@ -225,10 +225,10 @@ void CopyRam(const u8 *Source, u8 *Target, u16 Length)
 }
 
 /*
-函数功能：  内存区域清除（置0）
-参数    ：  Target  目标地址
-            Length  目标长度
-返回值  ：  void
+Function: Memory area clear (set to 0)
+Parameters : Target target address
+            Length Target length
+Return Value: void
 */
 void ClearRam(u8 *Target, u16 Length)
 {
@@ -240,9 +240,9 @@ void ClearRam(u8 *Target, u16 Length)
 }
 
 /*
-函数功能：  转换长文件名，Unicode码转为Gb2312码。用于读取文件名。
-参数    ：  LngNm   长文件名地址
-返回值  ：  void
+Function: Convert long file name, Unicode to Gb2312. Used to read the file name.
+Parameter: LngNm long file name address
+Return Value: void
 */
 void Convert_LngNm(u8 *LngNm)
 {
@@ -280,9 +280,9 @@ void Convert_LngNm(u8 *LngNm)
 }
 
 /*
-函数功能：  转换短文件名，去除短文件名中的空格。用于读取文件名。
-参数    ：  ShortNm 短文件名地址
-返回值  ：  void
+Function: Convert short filenames, remove spaces from short filenames. Used to read the file name.
+Arguments : ShortNm short filename address
+Return Value: void
 */
 void Convert_ShortNm(u8 *ShortNm)
 {
@@ -323,10 +323,10 @@ void Convert_ShortNm(u8 *ShortNm)
 }
 
 /*
-函数功能：  对比文件名，英文大小写不敏感。
-参数    ：  Name1   文件名1地址
-            Name2   文件名2地址
-返回值  ：  SUCCESSED或FAILED
+Function: Compare the file name, English case insensitive.
+Parameters : Name1 Filename1 address
+            Name2 filename2 address
+Return value : SUCCESSED or FAILED
 */
 FS_Status CompareName(u8 *Name1, u8 *Name2)
 {
@@ -369,12 +369,13 @@ FS_Status CompareName(u8 *Name1, u8 *Name2)
     return FAILED;
 }
 /*
-函数功能：  根据文件(夹)名在文件夹中寻找文件(夹)，如果找到则获取文件(夹)参数
-参数    ：  CurDir      结构体指针，当前文件夹
-            Target      结构体指针，目标文件(夹)
-            Target_Name 目标文件(夹)名
-            Object      FILE或DIR，用于区分目标是文件还是文件夹
-返回值  ：  FILE_EXIST或FILE_NOTEXIST
+Function: Find the file(folder) in the folder according to the file(folder) name, if found, get the file(folder) parameter
+Parameters : CurDir structure pointer, current folder
+            Target structure pointer, target file(folder)
+            Target_Name name of the target file(folder)
+            Object FILE or DIR, used to distinguish whether the target is a file or a folder
+Return value: FILE_EXIST or FILE_NOTEXIST
+
 */
 FS_Status Search_inDir(FS_Object    *CurDir,
                        FS_Object    *Target,
@@ -386,7 +387,7 @@ FS_Status Search_inDir(FS_Object    *CurDir,
     u32     CurClus;
     u16     CurEntAddr;
     u8      CurSec, LngNmCnt, DirEntCnt;
-    u16     Name_Buffer[53]; //最多容纳4个目录项 共52个Unicode字符
+    u16     Name_Buffer[53]; //Up to 4 directory entries totaling 52 Unicode characters
     u8      *Name;
 
     Name_Buffer[52] = 0;
@@ -479,9 +480,9 @@ FS_Status Search_inDir(FS_Object    *CurDir,
 }
 
 /*
-函数功能：  列出文件夹中的所有项目
-参数    ：  CurDir  当前文件夹
-返回值  ：  void
+Function: List all the items in the folder
+Parameters : CurDir current folder
+Return Value : void
 */
 void LsDir(FS_Object *CurDir)
 {
@@ -490,7 +491,7 @@ void LsDir(FS_Object *CurDir)
     u32     CurClus;
     u16     CurEntAddr;
     u8      CurSec, LngNmCnt, DirEntCnt;
-    u16     Name_Buffer[53]; //最多容纳4个目录项 共52个Unicode字符
+    u16     Name_Buffer[53]; //Up to 4 directory entries totaling 52 Unicode characters
     u8      *Name;
 
     Name_Buffer[52] = 0;
@@ -579,10 +580,10 @@ void LsDir(FS_Object *CurDir)
 }
 
 /*
-函数功能：  打开文件(夹)。根据给出的完整路径(如"/English/Essays of Travel.txt")找到文件并获取其参数。
-参数    ：  Target  结构体指针，目标文件(夹)。
-            FullName    完整路径 文件(夹)名
-返回值  ：  FILE_EXIST或FILE_NOTEXIST
+Function: Open a file (folder). Find the file and get its parameters according to the full path given (e.g. "/English/Essays of Travel.txt").
+Parameters: Target structure pointer, target file (folder).
+            FullName Full path File (folder) name
+Return value: FILE_EXIST or FILE_NOTEXIST
 */
 FS_Status OpenFile(FS_Object *Target, u8 *FullName)
 {
@@ -638,9 +639,9 @@ FS_Status OpenFile(FS_Object *Target, u8 *FullName)
 }
 
 /*
-函数功能：  顺序读取整个文件
-参数    ：  Target_File             目标文件
-返回值  ：  u8*
+Function: Read the entire file sequentially
+Parameter: Target_File Target file
+Return value : u8*
 */
 u8 *ReadFile(FS_Object *Target_File)
 {
@@ -673,11 +674,11 @@ void SetFileClustoFst(FS_Object *Target_File)
 }
 
 /*
-函数功能：  向文件中写入数据，从文件末尾追加
-参数    ：  Target_File 目标文件
-            dataBuf     数据源
-            dataLength  数据长度
-返回值  ：  void
+Function: Write data to the file, append from the end of the file
+Parameters : Target_File Target file
+            dataBuf Data source
+            dataLength Data length
+Return Value : void
 */
 void WriteFile(FS_Object *Target_File, u8 *dataBuf, u32 dataLength)
 {
@@ -756,10 +757,10 @@ void WriteFile(FS_Object *Target_File, u8 *dataBuf, u32 dataLength)
 }
 
 /*
-函数功能：  创建文件(夹)时向目录项中写入短文件(夹)名
-参数    ：  Source  文件(夹)名地址
-            Target  目录项中文件名地址
-返回值  ：  void
+Function: Write a short file (folder) name to the directory entry when creating a file (folder)
+Parameters: Source file (folder) name address
+            Target The address of the file name in the directory entry
+Return Value : void
 */
 void Write_ShortNm(u8 *Source, u8 *Target)
 {
@@ -817,14 +818,14 @@ void Write_ShortNm(u8 *Source, u8 *Target)
 }
 
 /*
-函数功能：  在文件夹中创建新文件(夹)，并获取新创建文件(夹)参数
-参数    ：  CurDir      当前文件夹
-            Target      目标文件(夹)，新文件(夹)创建完成后，参数存于此结构体
-            Target_Name 目标文件(夹)名，新文件(夹)以此命名
-            Object      FILE或DIR，用于区分将要创建的是文件还是文件夹
-返回值  ：  NAME_ERROR  文件(夹)名错误，此文件(夹)已存在。
-            FILE_FAILED 文件(夹)创建失败，空间不足
-            FILE_SUCCESSED  文件(夹)创建成功
+Function: Create a new file(folder) in the folder and get the parameters of the newly created file(folder)
+Parameters: CurDir current folder
+            Target target file (folder), after the new file (folder) is created, the parameters are stored in this structure
+            Target_Name The name of the target file (folder), the new file (folder) is named after it.
+            Object FILE or DIR, used to distinguish whether it is a file or a folder that will be created
+Return value: NAME_ERROR The file (folder) name is wrong, the file (folder) already exists.
+            FILE_FAILED File (folder) creation failed, not enough space
+            FILE_SUCCESSED File (folder) created successfully
 */
 FS_Status CreateNewObject(FS_Object *CurDir, FS_Object *Target, u8 *Target_Name, u8 Object)
 {
